@@ -1,7 +1,7 @@
 # belief_state_model
 Belief state model of decision making
 
-### Task-evoked pupil responses reflect internal belief states (in submission)
+### Task-evoked pupil responses reflect internal belief states (in press)
 Olympia Colizoli, Jan Willem de Gee, Anne Urai, Tobias H. Donner <br>
 bioRxiv 275776; doi: https://doi.org/10.1101/275776
 
