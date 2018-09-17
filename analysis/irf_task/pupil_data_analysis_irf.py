@@ -21,7 +21,6 @@ import scipy.stats as stats
 import matplotlib
 import matplotlib.pyplot as plt
 import pylab
-
 import seaborn as sns
 import pandas as pd
 import numpy.linalg as LA
@@ -33,21 +32,12 @@ from itertools import chain
 import logging
 import logging.handlers
 import logging.config
-
 import copy
-
-import nibabel as nib
-import sklearn
-import hddm
 import mne
 import statsmodels.formula.api as sm
-import nibabel as nib
-import nilearn
-
 import pyvttbl as pt
 from pyvttbl import SimpleHTML
 from copy import deepcopy
-
 from IPython import embed as shell
 
 sys.path.append(os.environ['ANALYSIS_HOME'])
@@ -58,9 +48,6 @@ from Tools.log import *
 # from Tools.Operators import ArrayOperator, EDFOperator, HDFEyeOperator, EyeSignalOperator
 # from Tools.Operators.EyeSignalOperator import detect_saccade_from_data
 # from Tools.Operators.CommandLineOperator import ExecCommandLine
-from Tools.other_scripts.plotting_tools import *
-from Tools.other_scripts.circularTools import *
-
 from Tools.other_scripts import functions_jw as myfuncs
 from Tools.other_scripts import functions_jw_GLM as GLM
 
