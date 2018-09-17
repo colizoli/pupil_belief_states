@@ -24,6 +24,9 @@ analysisFolder = os.path.join(this_project_folder, 'analysis')
 sys.path.append( analysisFolder )
 sys.path.append( os.environ['ANALYSIS_HOME'] )
 
+from Tools.Sessions import *
+from Tools.Run import *
+
 import pupil_preprocessing
 
 subjects = ['sub-01', 'sub-02', 'sub-03', 'sub-04', 'sub-05', 'sub-06', 'sub-07', 'sub-08', 'sub-09', 'sub-10', 'sub-11', 'sub-12', 'sub-13', 'sub-14', 'sub-15']
