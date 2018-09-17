@@ -66,8 +66,8 @@ class figureClass(object):
         self.data_folder = os.path.join(project_directory, 'data', 'across')
         self.figure_folder = os.path.join(project_directory, 'figures')
         self.dataframe_folder = os.path.join(project_directory, 'data_frames')
-        self.dataframe_folder_IRF = os.path.join('/home/jwdegee/colizoli/', 'measure_irf','data_frames')
-        self.dataframe_folder_feedback = os.path.join('/home/jwdegee/colizoli/', 'feedback','data_frames')
+        self.dataframe_folder_IRF = os.path.join('/home/', 'measure_irf','data_frames')
+        self.dataframe_folder_feedback = os.path.join('/home/', 'control','data_frames')
        
         ##############################    
         # Pupil time series information:
