@@ -27,15 +27,9 @@ from Tools.Sessions import *
 from Tools.Run import *
 from Tools.Operators import *
 from Tools.log import *
-from Tools.other_scripts.plotting_tools import *
-from Tools.other_scripts.circularTools import *
 
-# from Tools.other_scripts import functions_jw as myfuncs
-# from Tools.other_scripts import functions_jw_GLM as GLM
-
-import myfuncs.myfuncs as myfuncs
+import myfuncs as myfuncs
 import functions_oc as ocf
-
 
 ############################################
 # PUPIL functions first, then BOLD functions
