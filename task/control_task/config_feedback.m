@@ -1,6 +1,6 @@
 function [setup, fix, dots, feedback, results, flip] = config_feedback(setup, window1)
     % Configuration of the Feedback Reponse control experiment
-    % FEEDBACK.m
+    % control_task.m
     % O.Colizoli June 2017, adapted from A. Urai
 
     % counterbalancing
