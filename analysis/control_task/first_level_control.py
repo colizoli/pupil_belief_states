@@ -23,6 +23,9 @@ analysisFolder = os.path.join(this_project_folder, 'analysis')
 sys.path.append( analysisFolder )
 sys.path.append( os.environ['ANALYSIS_HOME'] )
 
+from Tools.Sessions import *
+from Tools.Run import *
+
 import pupil_data_analysis_control
 
 # -----------------
