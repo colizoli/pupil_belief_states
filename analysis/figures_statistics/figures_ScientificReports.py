@@ -28,9 +28,6 @@ from IPython import embed as shell
 
 sys.path.append(os.environ['ANALYSIS_HOME'])
 
-from Tools.other_scripts import functions_jw as myfuncs
-from Tools.other_scripts import functions_jw_GLM as GLM
-
 import functions_oc as ocf
 
 matplotlib.rcParams['pdf.fonttype'] = 42
