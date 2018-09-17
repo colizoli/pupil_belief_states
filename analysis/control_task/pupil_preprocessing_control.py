@@ -43,7 +43,6 @@ from Tools.log import *
 from Tools.Operators import ArrayOperator, EDFOperator, HDFEyeOperator, EyeSignalOperator
 from Tools.Operators.EyeSignalOperator import detect_saccade_from_data
 from Tools.Operators.CommandLineOperator import ExecCommandLine
-from Tools.other_scripts.circularTools import *
 from Tools.other_scripts import functions_jw as myfuncs
 from Tools.other_scripts import functions_jw_GLM as GLM
 
