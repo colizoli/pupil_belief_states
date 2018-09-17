@@ -27,12 +27,6 @@ from pyvttbl import SimpleHTML
 from IPython import embed as shell
 
 sys.path.append(os.environ['ANALYSIS_HOME'])
-from Tools.Sessions import *
-from Tools.Run import *
-from Tools.Operators import *
-from Tools.log import *
-from Tools.other_scripts.plotting_tools import *
-from Tools.other_scripts.circularTools import *
 
 from Tools.other_scripts import functions_jw as myfuncs
 from Tools.other_scripts import functions_jw_GLM as GLM
