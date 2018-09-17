@@ -23,7 +23,7 @@ analysisFolder = os.path.join(this_project_folder, 'analysis')
 sys.path.append( analysisFolder )
 sys.path.append( os.environ['ANALYSIS_HOME'] )
 
-import Pupil_Feedback
+import pupil_data_analysis_control
 
 # -----------------
 # Comments:       -
@@ -60,7 +60,7 @@ for which_subject in subjects:
                 version = 2
 
                 ## preprocessing:
-                pupilPreprocessSession = Pupil_Feedback.pupilPreprocessSession(subject=subject, experiment_name='pupil_feedback', experiment_nr=experiment, version=version, sample_rate_new=50, project_directory=this_project_folder)
+                pupilPreprocessSession = pupil_data_analysis_control.pupilPreprocessSession(subject=subject, experiment_name='pupil_feedback', experiment_nr=experiment, version=version, sample_rate_new=50, project_directory=this_project_folder)
                 pupilPreprocessSession.import_raw_data(edf_files=edfs, aliases=aliases)
                 pupilPreprocessSession.convert_edfs(aliases)
                 ## pupilPreprocessSession.delete_hdf5() # run if need to redo HDF5 files
