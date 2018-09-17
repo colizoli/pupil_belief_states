@@ -10,12 +10,10 @@ Task-evoked pupil responses reflect internal belief states. Scientific Reports 8
 
 import os, sys, datetime
 import subprocess, logging
-
 import scipy as sp
 import scipy.stats as stats
 import numpy as np
 import matplotlib.pylab as pl
-
 from IPython import embed as shell
 
 this_project_folder = '/home/data'
@@ -23,11 +21,6 @@ this_project_folder = '/home/data'
 analysisFolder = os.path.join(this_project_folder, 'analysis')
 sys.path.append( analysisFolder )
 sys.path.append( os.environ['ANALYSIS_HOME'] )
-
-from Tools.Sessions import *
-from Tools.Subjects.Subject import *
-from Tools.Run import *
-from Tools.Projects.Project import *
 
 import figures_ScientificReports as figures
 
