@@ -19,8 +19,8 @@ import matplotlib.pylab as pl
 
 from IPython import embed as shell
 
-this_raw_folder = '/home/jwdegee/raw/2015/3T_dots'
-this_project_folder = '/home/jwdegee/colizoli/data'
+this_raw_folder = '/home/raw/'
+this_project_folder = '/home/data'
 
 analysisFolder = os.path.join(this_project_folder, 'analysis')
 sys.path.append( analysisFolder )
