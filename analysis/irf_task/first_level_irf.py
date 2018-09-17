@@ -26,9 +26,7 @@ sys.path.append( analysisFolder )
 sys.path.append( os.environ['ANALYSIS_HOME'] )
 
 from Tools.Sessions import *
-from Tools.Subjects.Subject import *
 from Tools.Run import *
-from Tools.Projects.Project import *
 
 import pupil_preprocessing_irf
 
