@@ -21,7 +21,6 @@ import scipy.stats as stats
 import matplotlib
 import matplotlib.pyplot as plt
 import pylab
-
 import seaborn as sns
 import pandas as pd
 import numpy.linalg as LA
@@ -33,17 +32,9 @@ from itertools import chain
 import logging
 import logging.handlers
 import logging.config
-
 import copy
-
-import nibabel as nib
-import sklearn
-import hddm
 import mne
 import statsmodels.formula.api as sm
-# import statsmodels.sandbox.stats.multicomp.fdrcorrection0 as fdr
-import nibabel as nib
-import nilearn
 
 import pyvttbl as pt
 from pyvttbl import SimpleHTML
