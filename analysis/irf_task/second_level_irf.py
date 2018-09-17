@@ -10,7 +10,6 @@ Task-evoked pupil responses reflect internal belief states. Scientific Reports 8
 
 import os, sys, datetime
 import subprocess, logging
-
 import scipy as sp
 import scipy.stats as stats
 import numpy as np
@@ -25,11 +24,6 @@ analysisFolder = os.path.join(this_project_folder, 'analysis')
 sys.path.append( analysisFolder )
 sys.path.append( os.environ['ANALYSIS_HOME'] )
 
-from Tools.Sessions import *
-from Tools.Subjects.Subject import *
-from Tools.Run import *
-from Tools.Projects.Project import *
-
 import pupil_data_analysis_irf
 
 # -----------------
@@ -43,6 +37,6 @@ nr_sessions = [4,4,4,4,4,4,4,4,4,4,4,4,4,3,3]
 higherLevel = pupil_data_analysis_irf.higherLevel(subjects=subjects, experiment_name='pupil_measureIRF', project_directory=this_project_folder)
 #######################################################
 ## Output dataframes
-# higherLevel.dataframe_pupil_subjects()                # outputs one dataframe for all trials for all subjects
-# higherLevel.dataframe_IRF_deconvolution(plot_subjs=True)             # Does the FIR deconvolution on IRF (CHECK XLIM in PLOTS!!)
+higherLevel.dataframe_pupil_subjects()                # outputs one dataframe for all trials for all subjects
+higherLevel.dataframe_IRF_deconvolution(plot_subjs=True)             # Does the FIR deconvolution on IRF (CHECK XLIM in PLOTS!!)
 
