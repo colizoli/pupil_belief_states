@@ -33,9 +33,7 @@ from itertools import chain
 import logging
 import logging.handlers
 import logging.config
-
 import copy
-
 from IPython import embed as shell
 
 sys.path.append(os.environ['ANALYSIS_HOME'])
@@ -43,8 +41,8 @@ from Tools.log import *
 from Tools.Operators import ArrayOperator, EDFOperator, HDFEyeOperator, EyeSignalOperator
 from Tools.Operators.EyeSignalOperator import detect_saccade_from_data
 from Tools.Operators.CommandLineOperator import ExecCommandLine
-from Tools.other_scripts import functions_jw as myfuncs
-from Tools.other_scripts import functions_jw_GLM as GLM
+from Tools.other_scripts import myfuncs as myfuncs
+# from Tools.other_scripts import functions_jw_GLM as GLM
 
 matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
