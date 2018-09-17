@@ -23,10 +23,7 @@ from pyvttbl import SimpleHTML
 from IPython import embed as shell
 
 sys.path.append(os.environ['ANALYSIS_HOME'])
-from Tools.Sessions import *
-from Tools.Run import *
 from Tools.Operators import *
-from Tools.log import *
 
 import myfuncs as myfuncs
 import functions_oc as ocf
