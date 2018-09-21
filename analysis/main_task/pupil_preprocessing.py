@@ -263,15 +263,8 @@ class pupilPreprocessSession(object):
     
     def process_across_runs(self, aliases, create_pupil_BOLD_regressor=False):
         # scalars:
-        # pupil_d is pupil dilation locked to choice (elife time window)
-        # pupil_b is pupil baseline before cue (elife time window)
-        # pupil_b_feed is pupil baseline before feedback (elife time window) 
-        # pupil_d_feed is pupil dilation locked to feedback (elife time window)
-        # pupil_cd is pupil dilation locked to cue (elife time window)
-        
-        # pupil_d3 is [0.4,4.5] s for correlations to pupil
-        
-        # pupil_d_clean 3-6 sec locked to cue (scientific reports) (called 'clean' cuz changed from 3-3.5)
+        # pupil_b is pupil baseline before cue 
+        # pupil_b_feed is pupil baseline before feedback
         # pupil_resp_d_clean    3-6 sec locked to choice (scientific reports)
         # pupil_resp_d_clean_b2 3-6 sec locked to choice, baseline wrt choice
         # pupil_d_feed_clean is 3-6 sec locked to feedback (scientific reports)
@@ -283,24 +276,8 @@ class pupilPreprocessSession(object):
         bp_bp = []
         bp_feed_lp = []
         bp_feed_bp = []
-        tpr_lp = []
-        tpr_bp = []
-        tpr_feed_lp = []
-        tpr_feed_bp = []
-        tpr_cue_lp = []
-        tpr_cue_bp = []
-
-        tpr_d3_bp = [] # 0.5-4.5 secs cue (correlations to brain)
-        tpr_resp_d3_bp = [] # 0.5-4.5 secs choice (correlations to brain)
-        tpr_feed3_bp = [] # 0.5-4.5 secs feed (correlations to brain)
-        
-        tpr_d_clean_bp = [] # 3-6 secs cue
         tpr_resp_d_clean_bp = [] # 3-6 secs resp
-        tpr_feed_clean_bp = [] # 3-6 secs feed
-        # baselin wrt chocie
-        bp2_bp = [] # baseline wrt choice
-        tpr_resp_d_clean_b2_bp = [] # 3-6 secs baseline wrt choice
-        
+        tpr_feed_clean_bp = [] # 3-6 secs feed        
         
         for alias in aliases:
             parameters.append(self.ho.read_session_data(alias, 'parameters2'))
@@ -323,71 +300,25 @@ class pupilPreprocessSession(object):
             bp_bp.append( np.array([np.mean(pupil_bp[(time>i-500)*(time<i)]) for i in cue_times]) )
             bp_feed_lp.append( np.array([np.mean(pupil_lp[(time>i-500)*(time<i)]) for i in feedback_times]) )
             bp_feed_bp.append( np.array([np.mean(pupil_bp[(time>i-500)*(time<i)]) for i in feedback_times]) )
-            bp2_bp.append( np.array([np.mean(pupil_bp[(time>i-500)*(time<i)]) for i in choice_times]) )
         
-            # phasic pupil responses (elife time windows)
-                # choice interval [-.5, 1.5], feedback interval [1, 2], cue interval [.5, 2.5]
-            tpr_cue_lp.append( np.array([np.mean(pupil_lp[(time>i+500)*(time<i+2500)]) for i in cue_times]) - bp_lp[-1] )
-            tpr_cue_bp.append( np.array([np.mean(pupil_bp[(time>i+500)*(time<i+2500)]) for i in cue_times]) - bp_bp[-1] )
-            tpr_lp.append( np.array([np.mean(pupil_lp[(time>i-500)*(time<i+1500)]) for i in choice_times]) - bp_lp[-1] ) 
-            tpr_bp.append( np.array([np.mean(pupil_bp[(time>i-500)*(time<i+1500)]) for i in choice_times]) - bp_bp[-1] )
-            tpr_feed_lp.append( np.array([np.mean(pupil_lp[(time>i+1000)*(time<i+2000)]) for i in feedback_times]) - bp_feed_lp[-1]  )
-            tpr_feed_bp.append( np.array([np.mean(pupil_bp[(time>i+1000)*(time<i+2000)]) for i in feedback_times]) - bp_feed_bp[-1]  )
-                # cue3 [0.5,4.5], choice3 [0.5,4.5], feed3 [0.5,4.5] correlations to brain
-            tpr_d3_bp.append( np.array([np.mean(pupil_bp[(time>i+500)*(time<i+4500)]) for i in cue_times]) - bp_bp[-1] )
-            tpr_resp_d3_bp.append( np.array([np.mean(pupil_bp[(time>i+500)*(time<i+4500)]) for i in choice_times]) - bp_bp[-1] )
-            tpr_feed3_bp.append( np.array([np.mean(pupil_bp[(time>i+500)*(time<i+4500)]) for i in feedback_times]) - bp_feed_bp[-1]  )
-                # clean [3.0,6.0] after cue, resp and feedback
-            tpr_d_clean_bp.append( np.array([np.mean(pupil_bp[(time>i+3000)*(time<i+6000)]) for i in cue_times]) - bp_bp[-1] )
+            # phasic pupil responses 
+                # clean [3.0,6.0] after resp and feedback
             tpr_resp_d_clean_bp.append( np.array([np.mean(pupil_bp[(time>i+3000)*(time<i+6000)]) for i in choice_times]) - bp_bp[-1]  )
             tpr_feed_clean_bp.append( np.array([np.mean(pupil_bp[(time>i+3000)*(time<i+6000)]) for i in feedback_times]) - bp_feed_bp[-1]  )
-            tpr_resp_d_clean_b2_bp.append( np.array([np.mean(pupil_bp[(time>i+3000)*(time<i+6000)]) for i in choice_times]) - bp2_bp[-1]  ) # baseline wrt choice!
             
             
         # join over runs:
         parameters_joined = pd.concat(parameters)
-        bp_lp = np.concatenate(bp_lp) 
         bp_bp = np.concatenate(bp_bp)
-        tpr_lp = np.concatenate(tpr_lp) # elife time windows
-        tpr_bp = np.concatenate(tpr_bp)
-        bp_feed_lp = np.concatenate(bp_feed_lp)
         bp_feed_bp = np.concatenate(bp_feed_bp)
-        tpr_feed_lp = np.concatenate(tpr_feed_lp)
-        tpr_feed_bp = np.concatenate(tpr_feed_bp)
-        tpr_cue_lp = np.concatenate(tpr_cue_lp)
-        tpr_cue_bp = np.concatenate(tpr_cue_bp)
-        
-        tpr_d3_bp = np.concatenate(tpr_d3_bp) # 0.5-4.5
-        tpr_resp_d3_bp = np.concatenate(tpr_resp_d3_bp) # 0.5-4.5
-        tpr_feed3_bp = np.concatenate(tpr_feed3_bp) # 0.5-4.5
-        
-        tpr_d_clean_bp = np.concatenate(tpr_d_clean_bp) # 3-6 secs
         tpr_resp_d_clean_bp = np.concatenate(tpr_resp_d_clean_bp) # 3-6 secs
         tpr_feed_clean_bp = np.concatenate(tpr_feed_clean_bp)  # 3-6 secs
-        tpr_resp_d_clean_b2_bp = np.concatenate(tpr_resp_d_clean_b2_bp) # 3-6 secs baseline wrt choice
         
         # add to dataframe and save to hdf5:
         parameters_joined['pupil_b'] = bp_bp
-        parameters_joined['pupil_b_lp'] = bp_lp
-        
-        parameters_joined['pupil_d'] = tpr_bp
-        parameters_joined['pupil_d_lp'] = tpr_lp
-        parameters_joined['pupil_cd'] = tpr_cue_bp
-        parameters_joined['pupil_cd_lp'] = tpr_cue_lp
-        
         parameters_joined['pupil_b_feed'] = bp_feed_bp
-        parameters_joined['pupil_d_feed'] = tpr_feed_bp
-        parameters_joined['pupil_b_feed_lp'] = bp_feed_lp
-        parameters_joined['pupil_d_feed_lp'] = tpr_feed_lp
-        
-        parameters_joined['pupil_d3'] = tpr_d3_bp # locked to cue not choice
-        parameters_joined['pupil_resp_d3'] = tpr_resp_d3_bp # locked to choice
-        parameters_joined['pupil_d3_feed'] = tpr_feed3_bp # feedback
-        
-        parameters_joined['pupil_d_clean'] = tpr_d_clean_bp # locked to cue not choice
         parameters_joined['pupil_resp_d_clean'] = tpr_resp_d_clean_bp # locked to choice
         parameters_joined['pupil_d_feed_clean'] = tpr_feed_clean_bp # locked to feedback 
-        parameters_joined['pupil_resp_d_clean_b2'] = tpr_resp_d_clean_b2_bp # locked to choice, baseline wrt choice
         
         parameters_joined['subject'] = self.subject.initials
         self.ho.data_frame_to_hdf('', 'parameters_joined', parameters_joined)
