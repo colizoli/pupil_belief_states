@@ -31,7 +31,7 @@ path_raw = 'data/pupil_2AFC';
 cd(path_analyses);
 load('Coherence_Trials.mat'); % get_coherence_levels.m
 load('RT_Trials.mat');        % get_RT.m
-load('EDForder.mat');
+load('EDForder.mat');         % see raw/main_task
 
 subjects = 15;
 sessions = 4;
