@@ -142,7 +142,7 @@ def line_plot_anova(MEANS, SEMS, dv, aov, cond, ylabel, fac):
     for key,grp in MEANS.groupby(ls):
         # print(key)
         print(grp)
-        ax.errorbar(ind,grp[dv],yerr=SEMS[x], label=leg_label[x], color=colors[x], alpha=alphas[x])
+        ax.errorbar(ind,grp[dv],yerr=[SEMS[0][x],SEMS[1][x]], label=leg_label[x], color=colors[x], alpha=alphas[x])
         x=x+1
         
     if aov.shape[0] > 0:
